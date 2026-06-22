@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* Workbench theme — institutional desk aesthetic.
+   Deep navy ground, slate panels, a single teal brand accent, gold for
+   premium emphasis, and semantic green/red for grounded vs. risk signals. */
+@theme {
+  --color-ink: #0b1220;
+  --color-ink2: #0e1626;
+  --color-panel: #111d33;
+  --color-panel2: #16243f;
+  --color-edge: #25344f;
+  --color-edge2: #324563;
+  --color-fg: #e7eefb;
+  --color-muted: #93a4c4;
+  --color-faint: #61728f;
+  --color-brand: #46b7a6;
+  --color-brand2: #6fd3c4;
+  --color-gold: #d9a85a;
+  --color-risk: #e87a6f;
+  --color-ok: #5ac99a;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 100% -10%, rgba(70, 183, 166, 0.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(217, 168, 90, 0.06), transparent 55%),
+    var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-edge2) transparent;
+}
+
+/* Markdown answer styling */
+.prose-app :is(h1, h2, h3) {
+  font-weight: 600;
+  margin: 0.6em 0 0.3em;
+}
+.prose-app p {
+  margin: 0.4em 0;
+  line-height: 1.6;
+}
+.prose-app ul {
+  list-style: disc;
+  padding-left: 1.2em;
+  margin: 0.4em 0;
+}
+.prose-app ol {
+  list-style: decimal;
+  padding-left: 1.2em;
+  margin: 0.4em 0;
+}
+.prose-app li {
+  margin: 0.2em 0;
+}
+.prose-app strong {
+  color: var(--color-brand2);
+  font-weight: 600;
+}
+.prose-app code {
+  background: var(--color-ink2);
+  border: 1px solid var(--color-edge);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+.prose-app blockquote {
+  border-left: 3px solid var(--color-gold);
+  padding-left: 0.8em;
+  margin: 0.6em 0;
+  color: var(--color-muted);
+}
+.prose-app a {
+  color: var(--color-brand2);
+  text-decoration: underline;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.animate-pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }

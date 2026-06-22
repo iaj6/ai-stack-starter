@@ -1,0 +1,20 @@
+# Optional local Postgres + pgvector for running the real vector DB locally.
+# The app works without this (in-memory fallback); use it to demo persistence.
+#   docker compose up -d
+#   DATABASE_URL=postgres://app:app@localhost:5439/app npm run dev
+#
+# Port 5439 avoids clashing with a default local Postgres on 5432.
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "5439:5432"
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
