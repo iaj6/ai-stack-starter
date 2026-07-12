@@ -2,6 +2,7 @@
   "name": "ai-stack-starter",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev -p 3007",
     "build": "next build",
