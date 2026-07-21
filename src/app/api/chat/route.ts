@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { store } from "@/lib/db/store";
+import { ensureSeeded } from "@/lib/rag/ingest";
 import { runAgent } from "@/lib/orchestrator";
 import { inputGate, outputGate } from "@/lib/guardrails";
 import { addUsage } from "@/lib/ai/anthropic";
@@ -24,6 +25,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "recordId and message required" }, { status: 400 });
   }
 
+  await ensureSeeded();
   const s = store();
   const record = await s.getRecord(recordId);
   if (!record) return NextResponse.json({ error: "record not found" }, { status: 404 });

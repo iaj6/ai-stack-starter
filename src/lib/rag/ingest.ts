@@ -1,6 +1,7 @@
 import { store } from "@/lib/db/store";
 import { chunkText } from "@/lib/rag/chunk";
 import { embed } from "@/lib/rag/embeddings";
+import { vectorStoreKind } from "@/lib/config";
 import { DOMAIN } from "@/domain/server";
 import type { Chunk, DocType } from "@/lib/types";
 
@@ -28,6 +29,24 @@ export async function ingestDocument(opts: {
   }));
   await store().addChunks(chunks);
   return chunks.length;
+}
+
+let seedInFlight: Promise<unknown> | null = null;
+
+/**
+ * Self-hydration for the in-memory fallback. On serverless, each instance
+ * starts with an empty in-memory store — a Seed click lands on one instance
+ * while reads hit others, so the demo would look permanently empty. Read
+ * paths call this to lazily seed an empty memory store (hash embeddings make
+ * it cheap and key-free). Postgres-backed stores persist for real and skip it.
+ */
+export async function ensureSeeded(): Promise<void> {
+  if (vectorStoreKind() !== "memory") return;
+  if ((await store().listRecords()).length > 0) return;
+  seedInFlight ??= seedDemoData().finally(() => {
+    seedInFlight = null;
+  });
+  await seedInFlight;
 }
 
 /**

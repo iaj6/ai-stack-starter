@@ -61,8 +61,9 @@ model-ID change there.
 **<https://ai-stack-starter-flame.vercel.app>** — deployed keyless on purpose:
 retrieval, citations, guardrails, and the cost meter all run with zero API keys,
 and the System Health panel shows exactly which capabilities are stubbed. Click
-**Seed**, pick a record, ask away. (Keyless mode uses the in-memory store, which
-resets on serverless cold starts — hit **Seed** again if the pipeline is empty.)
+**Seed**, pick a record, ask away. (Keyless mode uses the in-memory store; each
+serverless instance seeds itself on demand, so the demo is always populated —
+though notes and chat history don't persist across instances.)
 
 ## Retarget it to a new domain (≈45 min)
 
