@@ -37,7 +37,6 @@ export function Workbench() {
   const [records, setDemoRecords] = useState<DemoRecordWithCount[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [status, setStatus] = useState<SystemStatus | null>(null);
-  const [vectorStore, setVectorStore] = useState("");
   const [messages, setMessages] = useState<UIMessage[]>([]);
   const [memories, setMemories] = useState<RecordNoteItem[]>([]);
   const [input, setInput] = useState("");
@@ -57,10 +56,9 @@ export function Workbench() {
   useEffect(() => {
     fetch("/api/status")
       .then((x) => x.json())
-      .then((r) => {
-        setStatus(r.status);
-        setVectorStore(r.vectorStore);
-      });
+      .then((r) => setStatus(r.status));
+    // False positive: loadDemoRecords only sets state inside fetch callbacks.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadDemoRecords();
   }, [loadDemoRecords]);
 
@@ -219,7 +217,7 @@ export function Workbench() {
           ))}
 
           <div className="mt-auto">
-            <SystemHealth status={status} vectorStore={vectorStore} />
+            <SystemHealth status={status} />
           </div>
         </aside>
 

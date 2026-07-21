@@ -16,6 +16,8 @@ supplies the words (prompts/labels), the math (tools), and the data (seed).
 ```bash
 cp -r src/domain/packs/cre src/domain/packs/<yourname>
 ```
+(`src/domain/packs/contracts/` is a complete second worked example of exactly
+this process — compare it against `cre` to see what changes and what doesn't.)
 
 ### 2. Reskin — `packs/<yourname>/ui.ts` (client-safe)
 Set `appName`, `shortName`, `tagline`, `entityNoun`/`entityNounPlural`,

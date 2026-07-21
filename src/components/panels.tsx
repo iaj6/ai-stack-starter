@@ -34,13 +34,7 @@ export function StatusDot({ ok }: { ok: boolean }) {
   );
 }
 
-export function SystemHealth({
-  status,
-  vectorStore,
-}: {
-  status: SystemStatus | null;
-  vectorStore: string;
-}) {
+export function SystemHealth({ status }: { status: SystemStatus | null }) {
   if (!status) return null;
   const rows = [
     { label: "LLM", v: status.llm },

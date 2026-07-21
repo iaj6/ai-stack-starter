@@ -27,7 +27,10 @@ interface Case {
   reference: string;
 }
 
-const dataset = JSON.parse(readFileSync(join(__dirname, "dataset.json"), "utf8")) as {
+// Default dataset targets the active domain pack; point EVAL_DATASET at another
+// file (e.g. dataset.contracts.json) after swapping packs.
+const datasetFile = process.env.EVAL_DATASET ?? "dataset.json";
+const dataset = JSON.parse(readFileSync(join(__dirname, datasetFile), "utf8")) as {
   cases: Case[];
 };
 

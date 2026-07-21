@@ -1,12 +1,18 @@
 # AI Stack Starter
 
+[![CI](https://github.com/iaj6/ai-stack-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/iaj6/ai-stack-starter/actions/workflows/ci.yml)
+
 A reusable, end-to-end skeleton for a **document-grounded AI assistant** — built to
 stand up a complete, demonstrable AI application fast. Everything is wired; you
 swap a thin **domain pack** to retarget it (deals → patients → cases → contracts →
 anything with records + documents + questions).
 
-Ships with a working example domain: **Deal IQ**, a private-credit CRE
-underwriting copilot.
+![The workbench: grounded answer with guardrail checks, ranked sources, agent trace, and live cost meter](docs/media/workbench.png)
+
+Ships with **two example domain packs** proving the swap:
+- **Deal IQ** (active default) — a private-credit CRE underwriting copilot
+- **Clause IQ** (`src/domain/packs/contracts/`) — an in-house contract-review
+  copilot; activate it by repointing the two SWAP POINTs (see below)
 
 **Deliberately framework-light.** No LangChain, no wrapper SDKs — every layer
 (retrieval, orchestration, guardrails, evals) is small, readable code you can
@@ -50,6 +56,14 @@ Models are pinned in `src/lib/config.ts` (Opus 4.8 reasoning, Haiku 4.5
 guardrails); swapping tiers — including the Claude 5 family — is a one-line
 model-ID change there.
 
+## Live demo
+
+**<https://ai-stack-starter-flame.vercel.app>** — deployed keyless on purpose:
+retrieval, citations, guardrails, and the cost meter all run with zero API keys,
+and the System Health panel shows exactly which capabilities are stubbed. Click
+**Seed**, pick a record, ask away. (Keyless mode uses the in-memory store, which
+resets on serverless cold starts — hit **Seed** again if the pipeline is empty.)
+
 ## Retarget it to a new domain (≈45 min)
 
 **You only touch `src/domain/`.** The frozen skeleton never changes. Copy the
@@ -67,6 +81,7 @@ src/domain/
     tools.ts       # the domain's compute tools (LTV/DSCR → yours)  (3) retool
     seed.ts        # synthetic records + documents                 (4) repopulate
     server.ts      # assembles the above
+  packs/contracts/ # Clause IQ — a complete second pack to crib from
 ```
 
 Then point the two SWAP POINTs at your new pack, update the deck copy in
@@ -77,7 +92,7 @@ Then point the two SWAP POINTs at your new pack, update the deck copy in
 ```bash
 npm run dev      # local dev (port 3007)
 npm run build    # production build
-npm run eval     # ground-truth eval (run `npm run dev` first)
+npm run eval     # ground-truth eval (run `npm run dev` first; EVAL_DATASET picks the dataset)
 npm run deck     # generate the stakeholder PowerPoint → deck/*.pptx
 ```
 

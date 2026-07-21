@@ -9,8 +9,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 A reusable, domain-agnostic skeleton for a document-grounded AI assistant
 (see README.md). End-to-end LLM stack: Next.js 16 + Anthropic SDK (Claude Opus
 4.8 / Haiku 4.5) + Voyage/OpenAI embeddings + Postgres/pgvector (in-memory
-fallback) + guardrails + eval harness + a stakeholder deck. Ships with a CRE
-private-credit example domain.
+fallback) + guardrails + eval harness + a stakeholder deck. Ships with two
+example domain packs: CRE private credit (`cre`, active default) and commercial
+contracts (`contracts`).
 
 **The frozen/domain split is the whole point:**
 - Everything in `src/lib`, `src/app`, `src/components` is the **frozen skeleton** —
