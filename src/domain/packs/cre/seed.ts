@@ -75,6 +75,22 @@ Sponsor track record: 14 completed value-add multifamily projects since 2011; no
 Property-level operating statement (trailing 12 months): effective gross income $2,712,000; operating expenses $1,002,000; net operating income $1,710,000.`,
       },
       {
+        // Deliberately conflicts with the rent roll (91% physical occupancy)
+        // and appraisal ($31.0M as-stabilized): exercises the conflicting-
+        // sources prompt rule and the mustIncludeAll eval case. Real corpora
+        // disagree; the assistant must surface both figures, not pick one.
+        type: "broker_teaser",
+        title: "Broker Marketing Teaser",
+        text: `MAPLE COURT APARTMENTS — EXCLUSIVE OFFERING SUMMARY (BROKER TEASER)
+Broker marketing material prepared by the listing agent. Figures are the broker's own.
+Maple Court Apartments: 184 units in one of Columbus's strongest rental submarkets.
+Occupancy: 95%, with waiting-list demand for renovated units.
+Pro-forma net operating income: $1,950,000 (assumes full renovation premium capture and 3% annual rent growth).
+Broker opinion of stabilized value: $32,500,000.
+28 renovated units already achieving a $190/month premium — 96 units of remaining value-add runway.
+All figures subject to buyer verification and independent appraisal.`,
+      },
+      {
         type: "loan_agreement",
         title: "Loan Agreement",
         text: `MAPLE COURT — SUMMARY OF KEY LOAN TERMS AND COVENANTS

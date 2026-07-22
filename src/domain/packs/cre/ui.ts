@@ -39,5 +39,6 @@ export const creUI: DomainUI = {
     appraisal: "Appraisal",
     borrower_financials: "Borrower Financials",
     loan_agreement: "Loan Agreement",
+    broker_teaser: "Broker Teaser",
   },
 };

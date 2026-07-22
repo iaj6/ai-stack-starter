@@ -73,6 +73,10 @@ npm run eval          # ground-truth pass (needs keys for full credit)
 ## Tips
 - Keep `ui.ts` free of seed data / prompts / tool code — it's bundled into the
   client. Heavy/secret stuff lives in `server.ts` and the other pack files.
+- Seed at least one **deliberate conflict** between documents (the `cre` pack's
+  broker teaser inflates occupancy vs. the rent roll) and add an eval case with
+  `mustIncludeAll` requiring both figures. Real corpora disagree; the assistant
+  should surface discrepancies, not silently pick a side.
 - The agent always has the built-in `search_documents` tool; your tools are merged
   in on top.
 - Pick the prospect's **actual** business as the domain — it's relatable and shows

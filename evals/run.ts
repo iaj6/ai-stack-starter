@@ -22,6 +22,7 @@ interface Case {
   recordId: string;
   question: string;
   mustInclude?: string[];
+  mustIncludeAll?: string[];
   expectCitations?: boolean;
   expectBlocked?: boolean;
   reference: string;
@@ -63,6 +64,12 @@ async function main() {
         // (e.g. a computed 89.8% or the document's rounded "90%").
         const hit = c.mustInclude.some((t) => answer.includes(t.toLowerCase()));
         checks.push({ name: `faithful(${c.mustInclude.join("|")})`, ok: hit });
+      }
+      if (c.mustIncludeAll) {
+        // allOf: conflict cases require every listed figure — surfacing both
+        // sides of a documented discrepancy, not silently picking one.
+        const all = c.mustIncludeAll.every((t) => answer.includes(t.toLowerCase()));
+        checks.push({ name: `conflict(${c.mustIncludeAll.join("&")})`, ok: all });
       }
       if (c.expectCitations) {
         checks.push({ name: "grounded", ok: (res.citations?.length ?? 0) > 0 });
