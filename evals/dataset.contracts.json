@@ -5,7 +5,15 @@
       "id": "northbeam-renewal-deadline",
       "recordId": "northbeam-analytics",
       "question": "What is the last date we can give notice of non-renewal on this contract?",
-      "mustInclude": ["2027-01-30", "January 30, 2027", "Jan 30, 2027"],
+      "relevantDocs": [
+        "agreement_summary",
+        "renewal_memo"
+      ],
+      "mustInclude": [
+        "2027-01-30",
+        "January 30, 2027",
+        "Jan 30, 2027"
+      ],
       "expectCitations": true,
       "reference": "Term ends 2027-03-31, 60-day non-renewal notice → deadline 2027-01-30 (Mar 31 minus 60 days)."
     },
@@ -13,7 +21,13 @@
       "id": "northbeam-notice-window",
       "recordId": "northbeam-analytics",
       "question": "How many days of advance notice do we have to give to avoid auto-renewal?",
-      "mustInclude": ["60"],
+      "relevantDocs": [
+        "agreement_summary",
+        "order_form"
+      ],
+      "mustInclude": [
+        "60"
+      ],
       "expectCitations": true,
       "reference": "60 days' written non-renewal notice before term end [Subscription Agreement Summary / Order Form]."
     },
@@ -21,7 +35,16 @@
       "id": "northbeam-autorenew-risk",
       "recordId": "northbeam-analytics",
       "question": "What is the single biggest risk an in-house reviewer should flag on this contract?",
-      "mustInclude": ["auto-renew", "auto renew", "automatic renewal", "renewal"],
+      "relevantDocs": [
+        "agreement_summary",
+        "renewal_memo"
+      ],
+      "mustInclude": [
+        "auto-renew",
+        "auto renew",
+        "automatic renewal",
+        "renewal"
+      ],
       "expectCitations": true,
       "reference": "Auto-renewal trap — misses the 60-day notice window and it renews for another 12 months at up to a 7% increase."
     },
@@ -29,7 +52,16 @@
       "id": "veldt-liability-cap-ratio",
       "recordId": "veldt-logistics",
       "question": "What is the liability cap in the current draft as a multiple of annual fees?",
-      "mustInclude": ["1.0x", "1x", "1.0"],
+      "relevantDocs": [
+        "agreement_summary",
+        "order_form",
+        "redline_notes"
+      ],
+      "mustInclude": [
+        "1.0x",
+        "1x",
+        "1.0"
+      ],
       "expectCitations": true,
       "reference": "Current cap $1,200,000 / annual fees $1,200,000 = 1.0x fees."
     },
@@ -37,7 +69,17 @@
       "id": "veldt-cap-carveouts",
       "recordId": "veldt-logistics",
       "question": "Which liabilities are excluded from the cap (uncapped) in this MSA?",
-      "mustInclude": ["confidential", "IP", "intellectual property", "indemn"],
+      "relevantDocs": [
+        "agreement_summary",
+        "amendment",
+        "redline_notes"
+      ],
+      "mustInclude": [
+        "confidential",
+        "IP",
+        "intellectual property",
+        "indemn"
+      ],
       "expectCitations": true,
       "reference": "Confidentiality breaches, IP infringement, and indemnification obligations are uncapped carve-outs."
     },
@@ -45,7 +87,15 @@
       "id": "corvid-price-escalation",
       "recordId": "corvid-systems",
       "question": "What is the maximum annual price escalation under the supply agreement?",
-      "mustInclude": ["4%", "4 percent", "four percent"],
+      "relevantDocs": [
+        "agreement_summary",
+        "amendment"
+      ],
+      "mustInclude": [
+        "4%",
+        "4 percent",
+        "four percent"
+      ],
       "expectCitations": true,
       "reference": "Escalation capped at the lesser of CPI or 4% per contract year [Supply Agreement Summary / Price Escalation Amendment]."
     },
@@ -53,7 +103,13 @@
       "id": "corvid-days-until",
       "recordId": "corvid-systems",
       "question": "As of 2026-07-21, how many days remain until the renewal-notice deadline on the Corvid supply agreement?",
-      "mustInclude": ["73"],
+      "relevantDocs": [
+        "agreement_summary",
+        "renewal_memo"
+      ],
+      "mustInclude": [
+        "73"
+      ],
       "expectCitations": true,
       "reference": "Notice deadline 2026-10-02 minus reference date 2026-07-21 = 73 days."
     },

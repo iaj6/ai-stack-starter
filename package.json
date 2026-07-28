@@ -9,6 +9,7 @@
     "start": "next start -p 3007",
     "lint": "eslint",
     "eval": "tsx --env-file=.env.local evals/run.ts",
+    "eval:retrieval": "tsx --env-file=.env.local evals/retrieval.ts",
     "deck": "tsx deck/build-deck.ts"
   },
   "dependencies": {

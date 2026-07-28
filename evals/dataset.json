@@ -5,7 +5,13 @@
       "id": "maple-ltv",
       "recordId": "maple-court",
       "question": "What is the as-is LTV on this deal?",
-      "mustInclude": ["70"],
+      "relevantDocs": [
+        "offering_memo",
+        "appraisal"
+      ],
+      "mustInclude": [
+        "70"
+      ],
       "expectCitations": true,
       "reference": "Loan $18.4M / as-is value $26.3M ≈ 70% LTV."
     },
@@ -13,7 +19,14 @@
       "id": "maple-dscr",
       "recordId": "maple-court",
       "question": "Compute the in-place DSCR and tell me if coverage is thin.",
-      "mustInclude": ["1.08"],
+      "relevantDocs": [
+        "appraisal",
+        "loan_agreement",
+        "borrower_financials"
+      ],
+      "mustInclude": [
+        "1.08"
+      ],
       "expectCitations": true,
       "reference": "NOI $1.71M / debt service ~$1.5824M ≈ 1.08x — thin."
     },
@@ -21,7 +34,14 @@
       "id": "gateway-debtyield",
       "recordId": "gateway-logistics",
       "question": "What is the debt yield at close?",
-      "mustInclude": ["9.8"],
+      "relevantDocs": [
+        "loan_agreement",
+        "appraisal",
+        "offering_memo"
+      ],
+      "mustInclude": [
+        "9.8"
+      ],
       "expectCitations": true,
       "reference": "NOI $3.05M / loan $31M ≈ 9.8%."
     },
@@ -29,7 +49,13 @@
       "id": "gateway-risk",
       "recordId": "gateway-logistics",
       "question": "What is the single biggest risk an analyst should weigh here?",
-      "mustInclude": ["tenant"],
+      "relevantDocs": [
+        "rent_roll",
+        "offering_memo"
+      ],
+      "mustInclude": [
+        "tenant"
+      ],
       "expectCitations": true,
       "reference": "Single-tenant concentration — 100% of income from one 3PL tenant."
     },
@@ -37,7 +63,13 @@
       "id": "palmetto-dscr",
       "recordId": "palmetto-point",
       "question": "Does the in-place cash flow cover debt service?",
-      "mustInclude": ["0.95"],
+      "relevantDocs": [
+        "borrower_financials",
+        "loan_agreement"
+      ],
+      "mustInclude": [
+        "0.95"
+      ],
       "expectCitations": true,
       "reference": "NOI $1.18M / debt service ~$1.24M ≈ 0.95x — does not cover (non-performing)."
     },
@@ -45,7 +77,15 @@
       "id": "palmetto-ltv-upb",
       "recordId": "palmetto-point",
       "question": "What is the LTV measured against the unpaid principal balance?",
-      "mustInclude": ["89", "90"],
+      "relevantDocs": [
+        "offering_memo",
+        "appraisal",
+        "loan_agreement"
+      ],
+      "mustInclude": [
+        "89",
+        "90"
+      ],
       "expectCitations": true,
       "reference": "UPB $12.75M / as-is value $14.2M ≈ 90%."
     },
@@ -53,7 +93,14 @@
       "id": "maple-occupancy-conflict",
       "recordId": "maple-court",
       "question": "What is the current occupancy?",
-      "mustIncludeAll": ["91", "95"],
+      "relevantDocs": [
+        "rent_roll",
+        "broker_teaser"
+      ],
+      "mustIncludeAll": [
+        "91",
+        "95"
+      ],
       "expectCitations": true,
       "reference": "Rent roll: 91% physical (89% economic). Broker teaser claims 95%. A passing answer surfaces both figures and flags the discrepancy instead of silently picking one."
     },

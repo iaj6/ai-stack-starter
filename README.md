@@ -30,7 +30,7 @@ them.
 | **Vector DB** | Postgres + `pgvector`, with in-memory fallback | ✅ |
 | **Memory** | Conversation memory + durable per-record notes | ✅ |
 | **Guardrails** | Input gate (injection + scope) + output gate (figure grounding) | ✅ |
-| **LLM eval** | Ground-truth harness scoring faithfulness / grounding / safety | ✅ |
+| **LLM eval** | Two-half harness: answer eval (faithfulness / grounding / safety) + retrieval eval (Recall@k / MRR / nDCG, mean & median) | ✅ |
 | **UI** | Workbench: chat, agent trace, guardrail panel, citations, memory, cost meter | ✅ |
 | **Deployment** | Vercel + Neon (see `RUNBOOK.md`) | ✅ |
 | **Deck** | Non-technical stakeholder PowerPoint generator (`deck/`) | example |
@@ -93,7 +93,9 @@ Then point the two SWAP POINTs at your new pack, update the deck copy in
 ```bash
 npm run dev      # local dev (port 3007)
 npm run build    # production build
-npm run eval     # ground-truth eval (run `npm run dev` first; EVAL_DATASET picks the dataset)
+npm run eval           # answer eval: faithfulness / grounding / safety (needs `npm run dev`)
+npm run eval:retrieval # retrieval-only eval: Recall@k / MRR / nDCG per query, no LLM
+                       # (EVAL_DATASET picks the dataset for both)
 npm run deck     # generate the stakeholder PowerPoint → deck/*.pptx
 ```
 

@@ -59,7 +59,11 @@ export { <yourname>Server as DOMAIN } from "./packs/<yourname>/server";
 ### 7. Refresh the supporting artifacts
 - `evals/dataset.json` — ground-truth Q&A: `{ recordId, question, mustInclude[],
   expectCitations, expectBlocked }`. `mustInclude` is **any-of** (accepts equivalent
-  figure forms). Include one injection case with `expectBlocked: true`.
+  figure forms); `mustIncludeAll` is **all-of** (conflict cases). Include one
+  injection case with `expectBlocked: true`. Add `relevantDocs` (doc-type labels)
+  per case so `npm run eval:retrieval` can score the retriever separately from
+  the generator — a doc that was never retrieved is a different bug from a
+  retrieved doc the model fumbled.
 - `deck/build-deck.ts` — the stakeholder deck copy (problem → what it does → why
   it's safe → ROI). Swap the CRE narrative for your domain's.
 
